@@ -1,4 +1,4 @@
-# Set up
+# Using VSCode with ROS2 Rolling
 Clone the repo into your preferred workspace name and `cd` into it:
 ```bash
 git clone git@github.com:henrygerardmoore/ros2_vscode_template.git ros2_workspace
