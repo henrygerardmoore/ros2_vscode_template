@@ -5,12 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       lsb-release=12.0-2 \
       wget=1.21.4-1ubuntu4 && \
     rm -rf /var/lib/apt/lists/*
-RUN wget --progress=dot:giga https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ros-rolling-ros-gz && \
-    rm -rf /var/lib/apt/lists/*
 
 # install other development packages
 RUN apt-get update && \
@@ -21,8 +16,7 @@ RUN apt-get update && \
       gdb \
       git-lfs \
       python3-pip \
-      sudo \
-      vim && \
+      sudo && \
     rm -rf /var/lib/apt/lists/*
 RUN pip3 install pre-commit --break-system-packages --no-cache-dir
 
@@ -70,7 +64,7 @@ ENV AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=1
 
 # define where the user's colcon workspace will be mounted to inside the container
 # (see the COLCON_WS volume in docker-compose.yaml)
-ENV COLCON_WS="/opt/overlay_ws"
+ENV COLCON_WS="/home/ubuntu/overlay_ws"
 # make the workspace the default directory when entering the container
 WORKDIR $COLCON_WS
 

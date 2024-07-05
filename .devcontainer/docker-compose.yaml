@@ -1,6 +1,6 @@
 services:
   cpu:
-    image: ros_rolling_ws:latest
+    image: ros2_rolling_ws
     privileged: true
     network_mode: host
     command: bash
