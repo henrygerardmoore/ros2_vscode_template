@@ -16,7 +16,8 @@ RUN apt-get update && \
       gdb \
       git-lfs \
       python3-pip \
-      sudo && \
+      sudo \
+      ssh && \
     rm -rf /var/lib/apt/lists/*
 RUN pip3 install pre-commit --break-system-packages --no-cache-dir
 
