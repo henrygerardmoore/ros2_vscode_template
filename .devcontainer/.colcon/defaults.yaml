@@ -1,0 +1,7 @@
+build:
+  symlink-install: true
+  mixin:
+    - ccache
+    - compile-commands
+    - rel-with-deb-info
+    - build-testing-on

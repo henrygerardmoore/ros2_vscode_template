@@ -1,0 +1,85 @@
+{
+  "tasks": [
+      {
+          "type": "shell",
+          "label": "Full build",
+          "command": "source /opt/ros/rolling/setup.bash && nice colcon build --symlink-install --mixin rel-with-deb-info compile-commands ccache && echo Build complete",
+          "options": {
+              "cwd": "${workspaceFolder}/../.."
+          },
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          },
+          "presentation": {
+              "echo": true,
+              "reveal": "always",
+              "focus": true,
+              "panel": "shared",
+              "showReuseMessage": true,
+              "clear": true
+          }
+      },
+      {
+          "type": "shell",
+          "label": "Update",
+          "command": "update.bash && echo Update complete",
+          "options": {
+              "cwd": "${workspaceFolder}/../.."
+          },
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          },
+          "presentation": {
+              "echo": true,
+              "reveal": "always",
+              "focus": true,
+              "panel": "shared",
+              "showReuseMessage": true,
+              "clear": true
+          }
+      },
+      {
+          "type": "shell",
+          "label": "Full debug build",
+          "command": "source /opt/ros/rolling/setup.bash && nice colcon build --symlink-install --mixin debug compile-commands ccache --build-base build_dbg --install-base install_dbg && source install_dbg/setup.bash && echo Debug build complete",
+          "options": {
+              "cwd": "${workspaceFolder}/../.."
+          },
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          },
+          "presentation": {
+              "echo": true,
+              "reveal": "always",
+              "focus": true,
+              "panel": "shared",
+              "showReuseMessage": true,
+              "clear": true
+          }
+      },
+      {
+          "type": "shell",
+          "label": "Full clean",
+          "command": "rm -rf build install build_dbg install_dbg log",
+          "options": {
+              "cwd": "${workspaceFolder}"
+          },
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          },
+          "presentation": {
+              "echo": true,
+              "reveal": "always",
+              "focus": true,
+              "panel": "shared",
+              "showReuseMessage": true,
+              "clear": true
+          }
+      }
+  ],
+  "version": "2.0.0"
+}

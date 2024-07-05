@@ -1,0 +1,6 @@
+build/
+build_dbg/
+src/
+log/
+install/
+install_dbg/
