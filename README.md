@@ -1,11 +1,18 @@
-# Using VSCode with ROS2 Rolling
+# Using ROS 2 Rolling in Docker with VSCode
+
+## Prerequisites
+
+Install [docker](https://docs.docker.com/engine/install/) and [docker compose](https://docs.docker.com/compose/install/).
+
+## Setup
+
 Clone the repo into your preferred workspace name and `cd` into it:
 ```bash
 git clone git@github.com:henrygerardmoore/ros2_vscode_template.git ros2_workspace
 cd ros2_workspace
 ```
 
-Then, clone whichever ros2 repo you like into `src`:
+Then, clone whichever ROS 2 repo you like into `src`:
 ```bash
 mkdir src
 cd src
@@ -43,11 +50,15 @@ rm .gitignore
 rm README.md
 ```
 
-# Using the tasks
+## Using VSCode tasks
 
 This repository includes a template `.vscode` directory with the tasks you will need to build your code (in both release and debug mode) and use `clangd`.
 You can use `ctrl`+`shift`+`B` to see the tasks available.
-See [here](https://github.com/kineticsystem/vscode_ros2) for further information and tips on using VSCode with ROS2.
+See [here](https://github.com/kineticsystem/vscode_ros2) for further information and tips on using VSCode with ROS 2.
+
+## Using Git
+
+This container should be set up to use your normal git configuration, optionally including GPG for signing commits.
 
 # Contributions
 
