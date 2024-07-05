@@ -70,9 +70,7 @@ WORKDIR $COLCON_WS
 
 RUN echo "alias colcon_cd='cd ${COLCON_WS}'" >> ~/.bashrc
 
-COPY ./install.sh /
 COPY ./entrypoint.sh /
-RUN /install.sh
 ENV SHELL=/bin/bash
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]

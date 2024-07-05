@@ -31,8 +31,10 @@ Then, run the `build_and_set_up.bash` script:
 ./.vscode/build_and_set_up.bash
 ```
 
-Finally, attach to the created docker container with vscode:
+Then, attach to the created docker container with vscode:
 ![image](https://github.com/henrygerardmoore/ros2_vscode_template/assets/44307180/ae93aba0-6360-4f66-8604-b03fbafde3b5)
+
+Once you are in, use the `update` task before trying to build, as it will install necessary dependencies.
 
 If you want, you can then remove the `.git` folder to make your workspace no longer a git repo and remove other extraneous things:
 ```bash
