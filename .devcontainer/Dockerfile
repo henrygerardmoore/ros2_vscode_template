@@ -1,9 +1,9 @@
 FROM osrf/ros:rolling-desktop-full
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      gnupg=2.4.4-2ubuntu17 \
-      lsb-release=12.0-2 \
-      wget=1.21.4-1ubuntu4 && \
+      gnupg \
+      lsb-release \
+      wget && \
     rm -rf /var/lib/apt/lists/*
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
