@@ -35,7 +35,7 @@ RUN echo $USER ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USER \
 USER $USER
 
 # setup colcon mixin and metadata
-WORKDIR /home/dev
+WORKDIR /home/$USER
 RUN colcon mixin add default \
       https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml && \
     colcon mixin update && \
@@ -66,6 +66,9 @@ ENV AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=1
 # define where the user's colcon workspace will be mounted to inside the container
 # (see the COLCON_WS volume in docker-compose.yaml)
 ENV COLCON_WS="/home/ubuntu/overlay_ws"
+
+# let us use gpg
+ENV GPG_TTY=/dev/pts/1
 # make the workspace the default directory when entering the container
 WORKDIR $COLCON_WS
 

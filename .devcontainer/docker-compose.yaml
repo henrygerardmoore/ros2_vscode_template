@@ -18,7 +18,7 @@ services:
       - ${COLCON_WS:-/dev/null}:/home/ubuntu/overlay_ws/:rw
       # enable visualization/GUIs
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${XAUTHORITY:-$HOME/.Xauthority}:/root/.Xauthority
+      - ${XAUTHORITY:-$HOME/.Xauthority}:/home/ubuntu/.Xauthority
       # mount ssh keys and gitconfig for running git operations in the container
       - /home/$USER/.ssh:/home/ubuntu/.ssh:ro
       - /home/$USER/.gitconfig:/home/ubuntu/.gitconfig:ro
@@ -26,4 +26,4 @@ services:
       - /dev/bus/usb:/dev/bus/usb
       # mount the directory with signing keys into the container, if `GPG_DIR` is specified by the user.
       # this is useful for things like signing git commits.
-      - ${GPG_DIR:-/dev/null/}:/root/.gnupg:rw
+      - ${GPG_DIR:-/dev/null/}:/home/ubuntu/.gnupg:rw
