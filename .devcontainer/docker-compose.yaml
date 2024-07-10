@@ -22,6 +22,7 @@ services:
       # mount ssh keys and gitconfig for running git operations in the container
       - /home/$USER/.ssh:/home/ubuntu/.ssh:ro
       - /home/$USER/.gitconfig:/home/ubuntu/.gitconfig:ro
+      - /home/$USER/.gitignore_global:/home/ubuntu/.gitignore_global:ro
       - /dev/input:/dev/input
       - /dev/bus/usb:/dev/bus/usb
       # mount the directory with signing keys into the container, if `GPG_DIR` is specified by the user.
