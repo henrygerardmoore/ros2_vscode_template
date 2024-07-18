@@ -33,9 +33,9 @@ export GPG_DIR=~/.gnupg # if you want to use gpg in your container to sign your 
 export ROS_DOMAIN_ID=44 # see https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Domain-ID.html
 ```
 
-Then, run the `build_and_set_up.bash` script:
+Then, run the `build_and_set_up.bash` script (optionally including a container name, which defaults to `ros2_rolling_ws`):
 ```bash
-./.vscode/build_and_set_up.bash
+CONTAINER_NAME=example_workspace ./.vscode/build_and_set_up.bash
 ```
 
 Then, attach to the created docker container with vscode:
