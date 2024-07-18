@@ -1,6 +1,6 @@
 services:
   cpu:
-    image: ros2_rolling_ws
+    image: $CONTAINER_NAME
     privileged: true
     network_mode: host
     command: bash
