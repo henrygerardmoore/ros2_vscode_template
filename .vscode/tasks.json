@@ -63,7 +63,7 @@
       {
           "type": "shell",
           "label": "Full clean",
-          "command": "rm -rf build install build_dbg install_dbg log",
+          "command": "rm -rf build/* install build_dbg/* install_dbg log",
           "options": {
               "cwd": "${workspaceFolder}"
           },
