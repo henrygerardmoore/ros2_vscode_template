@@ -10,7 +10,9 @@ set -e
 docker container rm -f $CONTAINER_NAME > /dev/null 2>&1
 export COLCON_WS=$(pwd)
 cd .devcontainer
+export COMPOSE_PROJECT_NAME=$CONTAINER_NAME
+export CONTAINER_NAME=$CONTAINER_NAME
 docker build --no-cache --pull -t $CONTAINER_NAME:latest .
-CONTAINER_NAME=$CONTAINER_NAME docker compose run -d --name $CONTAINER_NAME cpu
+docker compose run -d --name $CONTAINER_NAME cpu
 unset COLCON_WS
 cd -
