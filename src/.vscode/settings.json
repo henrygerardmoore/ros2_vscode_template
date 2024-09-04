@@ -1,5 +1,5 @@
 {
   "clangd.arguments": [
-    "--compile-commands-dir=build_dbg/"
+    "--compile-commands-dir=../build_dbg/"
   ]
 }
