@@ -5,7 +5,7 @@
           "label": "Full build",
           "command": "source /opt/ros/rolling/setup.bash && nice colcon build --symlink-install --mixin rel-with-deb-info compile-commands ccache && echo Build complete",
           "options": {
-              "cwd": "${workspaceFolder}"
+              "cwd": "${workspaceFolder}/.."
           },
           "group": {
               "kind": "build",
@@ -25,7 +25,7 @@
           "label": "Update",
           "command": "sudo apt update ; sudo apt upgrade -y ; rosdep install --ignore-src --from-paths src -y -r",
           "options": {
-              "cwd": "${workspaceFolder}"
+              "cwd": "${workspaceFolder}/.."
           },
           "group": {
               "kind": "build",
@@ -45,7 +45,7 @@
           "label": "Full debug build",
           "command": "source /opt/ros/rolling/setup.bash && nice colcon build --symlink-install --mixin debug compile-commands ccache --build-base build_dbg --install-base install_dbg && source install_dbg/setup.bash && echo Debug build complete",
           "options": {
-              "cwd": "${workspaceFolder}"
+              "cwd": "${workspaceFolder}/.."
           },
           "group": {
               "kind": "build",
@@ -65,7 +65,7 @@
           "label": "Full clean",
           "command": "rm -rf build/* install build_dbg/* install_dbg log",
           "options": {
-              "cwd": "${workspaceFolder}"
+              "cwd": "${workspaceFolder}/.."
           },
           "group": {
               "kind": "build",

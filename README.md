@@ -6,7 +6,7 @@ Install [docker](https://docs.docker.com/engine/install/) and [docker compose](h
 
 ## Setup
 
-Clone the repo into your preferred workspace name and `cd` into it:
+Clone this repo into your preferred workspace name and `cd` into it:
 ```bash
 git clone git@github.com:henrygerardmoore/ros2_vscode_template.git ros2_workspace
 cd ros2_workspace
@@ -14,13 +14,10 @@ cd ros2_workspace
 
 Then, clone whichever ROS 2 repo you like into `src`:
 ```bash
-mkdir src
-cd src
-git clone git@github.com:moveit/moveit2.git
-cd ..
+git -C src/ clone git@github.com:moveit/moveit2.git
 ```
 
-If necessary, you can set up your repo's dependencies with `vcstool`, for example:
+If necessary, you can set up your repo's source dependencies with `vcstool`, for example:
 ```bash
 vcs import --input src/moveit2/moveit2.repos src
 ```
@@ -35,15 +32,18 @@ export ROS_DOMAIN_ID=44 # see https://docs.ros.org/en/rolling/Concepts/Intermedi
 
 Then, run the `build_and_set_up.bash` script (optionally including a container name, which defaults to `ros2_rolling_ws`):
 ```bash
-CONTAINER_NAME=example_workspace ./.vscode/build_and_set_up.bash
+CONTAINER_NAME=example_workspace ./src/.vscode/build_and_set_up.bash
 ```
 
 Then, attach to the created docker container with vscode:
 ![image](https://github.com/henrygerardmoore/ros2_vscode_template/assets/44307180/ae93aba0-6360-4f66-8604-b03fbafde3b5)
 
-Once you are in, use the `update` task before trying to build, as it will install necessary dependencies.
+Then, open the `src` folder (which will be located in `/home/ubuntu/overlay_ws/src`) in vscode to utilize this repository's built-in tasks.
 
-If you want, you can then remove the `.git` folder to make your workspace no longer a git repo and remove other extraneous things:
+Once you have opened the `src` folder, use the `update` task before trying to build, as it will install necessary dependencies.
+
+If you want, you can then remove this repo's `.git` folder to make your workspace's root no longer a git repo, along with other extraneous things:
+
 ```bash
 rm -rf .git
 rm .gitignore
