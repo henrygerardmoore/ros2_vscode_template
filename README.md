@@ -25,7 +25,6 @@ vcs import --input src/moveit2/moveit2.repos src
 Next, export the requisite environment variables. For example, I use the following:
 
 ```bash
-export COLCON_WS=~/ros2_workspace # path to the current folder, highly recommended
 export GPG_DIR=~/.gnupg # if you want to use gpg in your container to sign your commits
 export ROS_DOMAIN_ID=44 # see https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Domain-ID.html
 ```
