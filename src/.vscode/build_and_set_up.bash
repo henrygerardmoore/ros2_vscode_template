@@ -6,6 +6,7 @@ then
   CONTAINER_NAME=$(basename $(pwd))
 fi
 
+echo "Building workspace $CONTAINER_NAME..."
 set -e
 docker container rm -f $CONTAINER_NAME > /dev/null 2>&1
 export COLCON_WS=$(pwd)
