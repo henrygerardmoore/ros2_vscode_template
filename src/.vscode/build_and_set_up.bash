@@ -3,7 +3,7 @@
 
 if [ -z ${CONTAINER_NAME+x} ]; 
 then 
-  CONTAINER_NAME=ros2_rolling_ws
+  CONTAINER_NAME=$(basename $(pwd))
 fi
 
 set -e
