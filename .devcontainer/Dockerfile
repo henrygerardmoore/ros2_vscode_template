@@ -68,7 +68,7 @@ ENV AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=1
 ENV COLCON_WS="/home/ubuntu/overlay_ws"
 
 # let us use gpg
-ENV GPG_TTY=/dev/pts/1
+RUN echo "export GPG_TTY=\$(tty)" >> ~/.bashrc
 # make the workspace the default directory when entering the container
 WORKDIR $COLCON_WS
 
