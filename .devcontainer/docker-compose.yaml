@@ -13,6 +13,9 @@ services:
       - ROS_STATIC_PEERS
       - ROS_DOMAIN_ID
       - GPG_AGENT_INFO
+      - EDITOR
+      - VISUAL
+      - GIT_EDITOR
     volumes:
       # Mount the colcon dev ws (specified as COLCON_WS) into the container.
       # If COLCON_WS is not defined by the user, it will default to /dev/null and no workspace will be mounted.
