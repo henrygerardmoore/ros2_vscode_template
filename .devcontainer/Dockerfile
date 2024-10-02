@@ -14,6 +14,7 @@ RUN apt-get update && \
       ccache \
       clang-format \
       gdb \
+      gdbserver \
       git-lfs \
       python3-pip \
       sudo \
