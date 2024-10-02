@@ -16,6 +16,8 @@ services:
       - EDITOR
       - VISUAL
       - GIT_EDITOR
+      - RMW_IMPLEMENTATION
+      - CYCLONEDDS_URI=/home/.config/cyclonedds.xml
     volumes:
       # Mount the colcon dev ws (specified as COLCON_WS) into the container.
       # If COLCON_WS is not defined by the user, it will default to /dev/null and no workspace will be mounted.
@@ -32,3 +34,4 @@ services:
       # mount the directory with signing keys into the container, if `GPG_DIR` is specified by the user.
       # this is useful for things like signing git commits.
       - ${GPG_DIR:-/dev/null/}:/home/ubuntu/.gnupg:rw
+      - ${CYCLONEDDS_URI-/dev/null/}:/home/.config/cyclonedds.xml:ro

@@ -17,6 +17,7 @@ RUN apt-get update && \
       gdbserver \
       git-lfs \
       python3-pip \
+      ros-rolling-rmw-cyclonedds-cpp \
       sudo \
       ssh && \
     rm -rf /var/lib/apt/lists/*
