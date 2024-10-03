@@ -12,16 +12,25 @@ RUN apt-get update && \
     apt-get install -q -y --no-install-recommends \
       bash-completion \
       ccache \
-      clang-format \
       gdb \
       gdbserver \
       git-lfs \
       python3-pip \
       ros-rolling-rmw-cyclonedds-cpp \
+      software-properties-common \
       sudo \
-      ssh && \
-    rm -rf /var/lib/apt/lists/*
+      ssh
 RUN pip3 install pre-commit --break-system-packages --no-cache-dir
+
+# add latest LLVM repos (instead of old ones available in apt)
+RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
+# now install latest clang-format and tidy
+RUN apt-get update && \
+    apt-get install -q -y --no-install-recommends \
+      clang-format \
+      clang-tidy && \
+    rm -rf /var/lib/apt/lists/*
 
 # make sure all packages from the base image are up-to-date with the packages installed in this Dockerfile
 RUN apt-get -qq update && apt-get -qq -y upgrade && \
