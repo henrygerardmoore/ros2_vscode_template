@@ -1,4 +1,4 @@
-FROM osrf/ros:rolling-desktop-full
+FROM osrf/ros:humble-desktop-full
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
       gnupg \
@@ -16,11 +16,11 @@ RUN apt-get update && \
       gdbserver \
       git-lfs \
       python3-pip \
-      ros-rolling-rmw-cyclonedds-cpp \
+      ros-humble-rmw-cyclonedds-cpp \
       software-properties-common \
       sudo \
       ssh
-RUN pip3 install pre-commit --break-system-packages --no-cache-dir
+RUN pip3 install pre-commit --no-cache-dir
 
 # add latest LLVM repos (instead of old ones available in apt)
 RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
@@ -41,7 +41,9 @@ RUN apt-get -qq update && apt-get -qq -y upgrade && \
 ENV USER=ubuntu
 ARG UID=1000
 ARG GID=$UID
-RUN echo $USER ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USER \
+RUN groupadd --gid $GID $USER \
+    && useradd --uid $UID --gid $GID -m $USER \
+    && echo $USER ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USER \
     && chmod 0440 /etc/sudoers.d/$USER
 USER $USER
 
@@ -67,7 +69,7 @@ RUN rosdep update
 RUN echo "source /usr/share/vcstool-completion/vcs.bash" >> ~/.bashrc
 
 # this is a workaround to the base image's entrypoint that sources ros (see https://github.com/osrf/docker_images/issues/114)
-RUN echo 'source "/opt/ros/rolling/setup.bash"' >> ~/.bashrc \
+RUN echo 'source "/opt/ros/humble/setup.bash"' >> ~/.bashrc \
     && echo "export AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=1" >> ~/.bashrc
 
 # workaround for the following pre-commit error (the real fix is to use a version of cppcheck > 2.7):

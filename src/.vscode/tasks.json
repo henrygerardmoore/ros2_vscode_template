@@ -3,7 +3,7 @@
       {
           "type": "shell",
           "label": "Full build",
-          "command": "source /opt/ros/rolling/setup.bash && nice colcon build --symlink-install --mixin rel-with-deb-info compile-commands ccache && echo Build complete",
+          "command": "source /opt/ros/humble/setup.bash && nice colcon build --symlink-install --mixin rel-with-deb-info compile-commands ccache && echo Build complete",
           "options": {
               "cwd": "${workspaceFolder}/.."
           },
@@ -43,7 +43,7 @@
       {
           "type": "shell",
           "label": "Full debug build",
-          "command": "source /opt/ros/rolling/setup.bash && nice colcon build --symlink-install --mixin debug compile-commands ccache --build-base build_dbg --install-base install_dbg && source install_dbg/setup.bash && echo Debug build complete",
+          "command": "source /opt/ros/humble/setup.bash && nice colcon build --symlink-install --mixin debug compile-commands ccache --build-base build_dbg --install-base install_dbg && source install_dbg/setup.bash && echo Debug build complete",
           "options": {
               "cwd": "${workspaceFolder}/.."
           },

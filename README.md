@@ -1,4 +1,4 @@
-# Using ROS 2 Rolling in Docker with VSCode
+# Using ROS 2 Humble in Docker with VSCode
 
 ## Prerequisites
 
@@ -7,17 +7,20 @@ Install [docker](https://docs.docker.com/engine/install/) and [docker compose](h
 ## Setup
 
 Clone this repo into your preferred workspace name and `cd` into it:
+
 ```bash
 git clone git@github.com:henrygerardmoore/ros2_vscode_template.git ros2_workspace
 cd ros2_workspace
 ```
 
 Then, clone whichever ROS 2 repo you like into `src`:
+
 ```bash
 git -C src/ clone git@github.com:moveit/moveit2.git
 ```
 
 If necessary, you can set up your repo's source dependencies with `vcstool`, for example:
+
 ```bash
 vcs import --input src/moveit2/moveit2.repos src
 ```
@@ -26,10 +29,11 @@ Next, export the requisite environment variables. For example, I use the followi
 
 ```bash
 export GPG_DIR=~/.gnupg # if you want to use gpg in your container to sign your commits
-export ROS_DOMAIN_ID=44 # see https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Domain-ID.html
+export ROS_DOMAIN_ID=44 # see https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html
 ```
 
 Then, run the `build_and_set_up.bash` script (optionally including a container name, which defaults to the name of the folder this repo is in):
+
 ```bash
 CONTAINER_NAME=example_workspace ./src/.vscode/build_and_set_up.bash
 ```
@@ -59,6 +63,6 @@ See [here](https://github.com/kineticsystem/vscode_ros2) for further information
 
 This container should be set up to use your normal git configuration, optionally including GPG for signing commits.
 
-# Contributions
+## Contributions
 
 If you notice a mistake or opportunity for improvement, feel free to open an issue or a PR :)
