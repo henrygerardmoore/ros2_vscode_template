@@ -3,34 +3,30 @@ FROM osrf/ros:humble-desktop-full
 RUN apt-get update && apt-get install -y --no-install-recommends \
       gnupg \
       lsb-release \
+      software-properties-common \
       wget && \
     rm -rf /var/lib/apt/lists/*
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# add latest LLVM repos (instead of old ones available in apt)
+RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 
 # install other development packages
 RUN apt-get update && \
     apt-get install -q -y --no-install-recommends \
       bash-completion \
       ccache \
+      clang-tidy-18 \
+      # for run-clang-tidy
+      clang-tidy \
       gdb \
       gdbserver \
       git-lfs \
       python3-pip \
       ros-humble-rmw-cyclonedds-cpp \
-      software-properties-common \
       sudo \
       ssh
 RUN pip3 install pre-commit --no-cache-dir
-
-# add latest LLVM repos (instead of old ones available in apt)
-RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-
-# now install latest clang-format and tidy
-RUN apt-get update && \
-    apt-get install -q -y --no-install-recommends \
-      clang-format \
-      clang-tidy && \
-    rm -rf /var/lib/apt/lists/*
 
 # make sure all packages from the base image are up-to-date with the packages installed in this Dockerfile
 RUN apt-get -qq update && apt-get -qq -y upgrade && \
